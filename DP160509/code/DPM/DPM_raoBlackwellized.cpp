@@ -107,7 +107,7 @@ arma::uvec DPM_raoBlackwellized(arma::mat DT, const int iter_num, const double M
         arma::uvec lth_cat = tempcat(lth_cluster);
     
         double n_c = static_cast<double>(lth_y.size());
-        double mu_theta = (sigma0 * arma::accu(lth_y) + mu0 * sigma) / (n_c * sigma0);
+        double mu_theta = (sigma0 * arma::accu(lth_y) + mu0 * sigma) / (n_c * sigma0 + sigma);
         double sigma_theta = (sigma * sigma0) / (n_c * sigma0 + sigma);
         p(l) = n_c / (static_cast<double>(N) - 1.0 + M) * my_dnorm(y(i), mu_theta, std::sqrt(sigma_theta + sigma));
       }

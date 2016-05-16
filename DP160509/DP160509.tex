@@ -366,7 +366,7 @@ where $^-$: the appropriate quantity with $\theta_i$ excluded.
 
 \frame{\frametitle{Gibbs Sampler for $\theta_i$}
 \begin{itemize}
-  \item sample $\theta_i$ equal to one of the unique $\theta_j^*$'s with probability $\propto \; n_j^- p(y_i |\theta_j^* )$
+  \item sample $\theta_i$ equal to one of the unique $\theta_j^*$'s with probability $\propto \; n_j^- p(y_i |\theta_j^* ) = n_{j}^{-}\int p\left(y_{i}|\theta_{i}^{*}\right)\,d\delta_{\theta_{j}^{*}}\left(\theta_{i}^{*}\right)$
   \item[] or
   \item sample from the posterior distribution based solely on $y_i$ with probability $\propto\; M\int p(y_i |\theta_i )\, dG_0 (\theta_i )$
   \item[]

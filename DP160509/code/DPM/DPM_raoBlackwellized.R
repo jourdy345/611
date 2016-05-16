@@ -35,7 +35,7 @@ generate_sample = function(N, M, mu0, sigma0) {
 }
 
 
-DPM_raoBlackwellized = function(iter_num, M, N, mu0, sigma0, sigma) {
+DPM_raoBlackwellized_R = function(iter_num, M, N, mu0, sigma0, sigma) {
 
   ### Generate simulation data
   components = sample(1:4, prob = c(0.3, 0.4, 0.2, 0.1), size = N, replace = TRUE)
@@ -78,7 +78,7 @@ DPM_raoBlackwellized = function(iter_num, M, N, mu0, sigma0, sigma) {
   		for (temp_cat in temp_category) {
 	  		temp_DT2 = temp_DT[category == temp_cat,]
 	  		n_c = nrow(temp_DT2)
-	  		mu_theta = (sigma0 * sum(temp_DT2$y) + mu0 * sigma) / (n_c * sigma0)
+	  		mu_theta = (sigma0 * sum(temp_DT2$y) + mu0 * sigma) / (n_c * sigma0 + sigma)
 	  		sigma_theta = (sigma * sigma0) / (n_c * sigma0 + sigma)
   			p = c(p, n_c / (N-1+M) * dnorm(temp_y$y, mu_theta, sqrt(sigma_theta + sigma)))
   		}
